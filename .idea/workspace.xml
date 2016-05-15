@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6f1d1008-6a2d-4290-9d92-eb2276dcf683" name="Default" comment="add many new house concerned">
+    <list default="true" id="6f1d1008-6a2d-4290-9d92-eb2276dcf683" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/house_rent_iwjw.py" afterPath="$PROJECT_DIR$/house_rent_iwjw.py" />
     </list>
@@ -27,8 +27,8 @@
       <file leaf-file-name="house_rent_iwjw.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/house_rent_iwjw.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3125">
-              <caret line="70" column="19" selection-start-line="70" selection-start-column="19" selection-end-line="70" selection-end-column="19" />
+            <state vertical-scroll-proportion="0.3409091">
+              <caret line="71" column="19" selection-start-line="71" selection-start-column="19" selection-end-line="71" selection-end-column="19" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
@@ -471,7 +471,13 @@
       <option name="project" value="LOCAL" />
       <updated>1463055570635</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="add 伟莱家园">
+      <created>1463309535012</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1463309535012</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -520,7 +526,8 @@
     <MESSAGE value="add 长宁路1488弄,宁康小区" />
     <MESSAGE value="change the rules of getting name/price/area/layout because iwjw has changes his page" />
     <MESSAGE value="add many new house concerned" />
-    <option name="LAST_COMMIT_MESSAGE" value="add many new house concerned" />
+    <MESSAGE value="add 伟莱家园" />
+    <option name="LAST_COMMIT_MESSAGE" value="add 伟莱家园" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -546,8 +553,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/house_rent_iwjw.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3125">
-          <caret line="70" column="19" selection-start-line="70" selection-start-column="19" selection-end-line="70" selection-end-column="19" />
+        <state vertical-scroll-proportion="0.3409091">
+          <caret line="71" column="19" selection-start-line="71" selection-start-column="19" selection-end-line="71" selection-end-column="19" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>
