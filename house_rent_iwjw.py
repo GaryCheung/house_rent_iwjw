@@ -88,7 +88,7 @@ def delete_today_data(config):
     try:
         with connection.cursor() as cursor:
             # 执行sql语句，插入记录
-            sql = "DELETE FROM house_rent WHERE date = '%s'" %(present_date)
+            sql = "DELETE FROM house_rent WHERE date = '%s' and source = 'iwjw'" %(present_date)
             cursor.execute(sql)
             # 没有设置默认自动提交，需要主动提交，以保存所执行的语句
         connection.commit()

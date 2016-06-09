@@ -89,7 +89,7 @@ def delete_today_data(config):
     try:
         with connection.cursor() as cursor:
             # 执行sql语句，插入记录
-            sql = "DELETE FROM house_rent WHERE date = '%s' and source = 'iwjw'" %(present_date)
+            sql = "DELETE FROM house_rent WHERE date = '%s' and source = 'lianjia'" %(present_date)
             cursor.execute(sql)
             # 没有设置默认自动提交，需要主动提交，以保存所执行的语句
         connection.commit()
@@ -97,10 +97,10 @@ def delete_today_data(config):
         connection.close()
     print('-----------------------delete success!----------------','\n')
 
-def get_iwjw_rent_url(url_number,housename):
+def get_lianjia_rent_url(url_number,housename):
     print('--------------------------',url_number,housename)
     urls = []
-    url_begin = 'http://www.iwjw.com/chuzu/shanghai/?kw='
+    url_begin = 'http://sh.lianjia.com/zufang/rs'
     for i in range(1,url_number+1):
         urls.append(i)
         url_middle = quote(housename[i-1])
@@ -108,12 +108,12 @@ def get_iwjw_rent_url(url_number,housename):
         urls[i-1] = url_begin + url_middle
     return urls
 
-def get_iwjw_house(urls,source):
+def get_lianjia_house(urls,source):
     for url in urls:
         print('current url:---------',url)
         web_data = requests.get(url)
         soup = BeautifulSoup(web_data.text,'lxml')
-        house_page = soup.select('div.mod-lists.mb50.clearfix.rent-lists > div.List.mod-border-box.mod-list-shadow > div > p > a')
+        house_page = soup.select('body > div.wrapper > div.page-box.house-lst-page-box > a')
         #print('house_page------------',house_page)
         for page in house_page:
             if page.get_text().isdigit():
@@ -122,19 +122,19 @@ def get_iwjw_house(urls,source):
                 break
         if house_page==[]:
             pages=1
-        url_base = 'http://www.iwjw.com/chuzu/shanghai/'
+        url_base = 'http://sh.lianjia.com/zufang/'
         for page in range(1,int(pages)+1):
-            more_page = 'p'+str(page)+'/'
+            more_page = 'd'+str(page)
             urls = re.split(url_base,url)
             url = url_base + more_page + urls[1]
             #print('real url is ----------------',url)
             web_data = requests.get(url)
             soup = BeautifulSoup(web_data.text,'lxml')
-            house_name = soup.select('div.mod-lists.mb50.clearfix > div:nth-of-type(1) > ol > li > div > h4 > b > a > span > span:nth-of-type(1)')
-            house_price = soup.select('div.mod-lists.mb50.clearfix > div:nth-of-type(1) > ol > li > div.house-price > span.total-text')
-            house_area = soup.select('div.mod-lists.mb50.clearfix > div:nth-of-type(1) > ol > li > div.f-l > h4 > b > a > span > span:nth-of-type(3)')
-            house_layout = soup.select('div.mod-lists.mb50.clearfix > div:nth-of-type(1) > ol > li > div.f-l > h4 > b > a > span > span:nth-of-type(2)')
-            print(house_name,house_price,house_area,house_layout)
+            house_name = soup.select('#house-lst > li > div.info-panel > div.col-1 > div.where > a > span')
+            house_price = soup.select('#house-lst > li > div.info-panel > div.col-3 > div.price > span')
+            house_area = soup.select('#house-lst > li > div.info-panel > div.col-1 > div.where > span:nth-of-type(2)')
+            house_layout = soup.select('#house-lst > li > div.info-panel > div.col-1 > div.where > span:nth-of-type(1)')
+            #print(house_name,house_price,house_area,house_layout)
             for name,price,area,layout in zip (house_name,house_price,house_area,house_layout):
                 print(name,price,area,layout)
                 connection = pymysql.connect(**config)
@@ -156,11 +156,11 @@ def get_iwjw_house(urls,source):
                      connection.close()
         time.sleep(1)
 
-delete_today_data(config)
+#delete_today_data(config)
 url_number = len(house_name)
 source =['fangdd','lianjia','iwjw']
 print('execute time:-------------------',present_date)
 
-iwjw_url = get_iwjw_rent_url(url_number,house_name)
-#print('url is --------------',iwjw_url)
-get_iwjw_house(iwjw_url,source[2])
+lianjia_url = get_lianjia_rent_url(url_number,house_name)
+#print('url is --------------',lianjia_url)
+get_lianjia_house(lianjia_url,source[1])
