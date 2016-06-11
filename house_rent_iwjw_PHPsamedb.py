@@ -6,6 +6,7 @@ import pymysql
 import re
 from urllib.parse import quote
 
+'''
 house_name = ['古桐公寓',
               '三泾南宅',
               '中阳小区',
@@ -71,6 +72,9 @@ house_name = ['古桐公寓',
               '伟莱家园',
               '东方丽景'
               ]
+'''
+
+house_name = ['临沂六村']
 
 config = {
     'host':'127.0.0.1',
@@ -142,7 +146,9 @@ def get_iwjw_house(urls,source):
                 name = name.encode('UTF-8', 'ignore')
                 #price = price.get_text()
                 price = re.findall(r'(\w*[0-9]+\.*[0-9]+)\w*',price.get_text())
-                area = re.findall(r'(\w*[0-9]+\.*[0-9]+)\w*',area.get_text())
+                #print('##############',area.get_text())
+                area = re.findall(r'(\w*[0-9]+\.*[0-9]*)',area.get_text())
+                #print('#############',area)
                 layout = layout.get_text()
                 print(price,'-----',area,'--------',layout,'-----------\n')
                 try:

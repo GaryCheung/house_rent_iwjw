@@ -6,6 +6,7 @@ import pymysql
 import re
 from urllib.parse import quote
 
+'''
 house_name = ['古桐公寓',
               '三泾南宅',
               '中阳小区',
@@ -71,6 +72,9 @@ house_name = ['古桐公寓',
               '伟莱家园',
               '东方丽景'
               ]
+'''
+
+house_name = ['临沂六村']
 
 config = {
     'host':'127.0.0.1',
